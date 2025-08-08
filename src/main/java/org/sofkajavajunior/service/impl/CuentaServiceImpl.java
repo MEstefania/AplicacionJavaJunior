@@ -3,7 +3,9 @@ package org.sofkajavajunior.service.impl;
 import org.sofkajavajunior.dto.CuentaDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
 import org.sofkajavajunior.service.CuentaService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CuentaServiceImpl implements CuentaService {
     @Override
     public BaseRespondeDTO crearCuenta(CuentaDTO Cuenta) {

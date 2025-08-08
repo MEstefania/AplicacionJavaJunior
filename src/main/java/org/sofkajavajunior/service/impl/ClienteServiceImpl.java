@@ -3,7 +3,9 @@ package org.sofkajavajunior.service.impl;
 import org.sofkajavajunior.dto.ClienteDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
 import org.sofkajavajunior.service.ClienteService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ClienteServiceImpl implements ClienteService {
     @Override
     public BaseRespondeDTO crearCliente(ClienteDTO cliente) {
@@ -16,7 +18,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public BaseRespondeDTO obtenerCliente(String nombreCliente) {
+    public BaseRespondeDTO obtenerTodosLosClientes() {
         return null;
     }
 

@@ -3,7 +3,9 @@ package org.sofkajavajunior.service.impl;
 import org.sofkajavajunior.dto.MovimientoDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
 import org.sofkajavajunior.service.MovimientoService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MovimientoServiceImpl implements MovimientoService {
     @Override
     public BaseRespondeDTO crearMovimiento(MovimientoDTO Movimiento) {
