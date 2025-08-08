@@ -1,34 +1,61 @@
 package org.sofkajavajunior.service.impl;
 
 import org.sofkajavajunior.dto.ClienteDTO;
-import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseSimpleDTO;
+import org.sofkajavajunior.dto.respuestaBase.ResponseBaseMapper;
+import org.sofkajavajunior.exception.ClienteException;
+import org.sofkajavajunior.exception.MovimientoException;
+import org.sofkajavajunior.model.Cliente;
+import org.sofkajavajunior.repository.ClienteRepository;
 import org.sofkajavajunior.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.modelmapper.ModelMapper;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
+    private final ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ClienteRepository clienteRepository;
+
     @Override
-    public BaseRespondeDTO crearCliente(ClienteDTO cliente) {
+    public BaseResponseDTO crearCliente(ClienteDTO cliente) {
+        Cliente nuevoCliente = new Cliente();
+        nuevoCliente.setNombre(cliente.getNombre());
+        nuevoCliente.setIdentificacion(cliente.getIdentificacion());
+        nuevoCliente.setEstado(cliente.getEstado());
+        nuevoCliente.setEdad(cliente.getEdad());
+        nuevoCliente.setContrasenia(cliente.getContrasenia());
+        nuevoCliente.setDireccion(cliente.getDireccion());
+        nuevoCliente.setGenero(cliente.getGenero());
+        nuevoCliente.setTelefono(cliente.getTelefono());
+        return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(nuevoCliente).getId());
+    }
+
+    @Override
+    public BaseResponseSimpleDTO obtenerCliente(Long idCliente) {
+        return ResponseBaseMapper.generateOkSimpleResponse(modelMapper.map(
+                clienteRepository.findById(idCliente),
+                ClienteDTO.class));
+    }
+
+    @Override
+    public BaseResponseDTO obtenerTodosLosClientes() {
+        return ResponseBaseMapper.generateOkResponse(clienteRepository.findAll().stream().map(cliente -> modelMapper.map(cliente, ClienteDTO.class)).collect(Collectors.toList()));
+    }
+
+    @Override
+    public BaseResponseDTO actualizarCliente(ClienteDTO cliente, Long idCliente) {
         return null;
     }
 
     @Override
-    public BaseRespondeDTO obtenerCliente(Long idCliente) {
-        return null;
-    }
-
-    @Override
-    public BaseRespondeDTO obtenerTodosLosClientes() {
-        return null;
-    }
-
-    @Override
-    public BaseRespondeDTO actualizarCliente(ClienteDTO cliente, Long idCliente) {
-        return null;
-    }
-
-    @Override
-    public BaseRespondeDTO eliminarCliente(Long idCliente) {
+    public BaseResponseDTO eliminarCliente(Long idCliente) {
         return null;
     }
 }

@@ -61,3 +61,34 @@ CREATE table IF NOT EXISTS sofka.movimiento
 
 ALTER TABLE sofka.movimiento
     OWNER to "sofka_owner";
+
+-----GRANTS
+GRANT
+USAGE
+ON
+SCHEMA
+sofka TO "sofka_user";
+
+GRANT
+SELECT,
+INSERT
+,
+UPDATE,
+DELETE
+ON ALL TABLES IN SCHEMA sofka
+    TO "sofka_user";
+
+GRANT
+SELECT,
+UPDATE
+    ON ALL
+    SEQUENCES IN SCHEMA sofka
+    TO "sofka_user";
+
+GRANT
+SELECT,
+INSERT,
+UPDATE,
+DELETE
+ON ALL TABLES IN SCHEMA public
+    TO "sofka_user";

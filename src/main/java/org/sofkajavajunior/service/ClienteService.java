@@ -1,12 +1,13 @@
 package org.sofkajavajunior.service;
 
 import org.sofkajavajunior.dto.ClienteDTO;
-import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseSimpleDTO;
 
 public interface ClienteService {
-    BaseRespondeDTO crearCliente(ClienteDTO cliente);
-    BaseRespondeDTO obtenerCliente(Long idCliente);
-    BaseRespondeDTO obtenerTodosLosClientes();
-    BaseRespondeDTO actualizarCliente(ClienteDTO cliente, Long idCliente);
-    BaseRespondeDTO eliminarCliente(Long idCliente);
+    BaseResponseDTO crearCliente(ClienteDTO cliente);
+    BaseResponseSimpleDTO obtenerCliente(Long idCliente);
+    BaseResponseDTO obtenerTodosLosClientes();
+    BaseResponseDTO actualizarCliente(ClienteDTO cliente, Long idCliente);
+    BaseResponseDTO eliminarCliente(Long idCliente);
 }

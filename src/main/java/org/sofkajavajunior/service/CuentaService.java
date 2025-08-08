@@ -1,12 +1,12 @@
 package org.sofkajavajunior.service;
 
 import org.sofkajavajunior.dto.CuentaDTO;
-import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
 
 public interface CuentaService {
-    BaseRespondeDTO crearCuenta(CuentaDTO Cuenta);
-    BaseRespondeDTO obtenerCuenta(Long idCuenta);
-    BaseRespondeDTO obtenerCuenta(String nombreCuenta);
-    BaseRespondeDTO actualizarCuenta(CuentaDTO Cuenta, Long idCuenta);
-    BaseRespondeDTO eliminarCuenta(Long idCuenta);
+    BaseResponseDTO crearCuenta(CuentaDTO Cuenta);
+    BaseResponseDTO obtenerCuenta(Long idCuenta);
+    BaseResponseDTO obtenerCuenta(String nombreCuenta);
+    BaseResponseDTO actualizarCuenta(CuentaDTO Cuenta, Long idCuenta);
+    BaseResponseDTO eliminarCuenta(Long idCuenta);
 }

@@ -1,11 +1,11 @@
 package org.sofkajavajunior.service;
 
 import org.sofkajavajunior.dto.MovimientoDTO;
-import org.sofkajavajunior.dto.respuestaBase.BaseRespondeDTO;
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
 
 public interface MovimientoService {
-    BaseRespondeDTO crearMovimiento(MovimientoDTO Movimiento);
-    BaseRespondeDTO obtenerMovimiento(Long idMovimiento);
-    BaseRespondeDTO actualizarMovimiento(MovimientoDTO Movimiento, Long idMovimiento);
-    BaseRespondeDTO eliminarMovimiento(Long idMovimiento);
+    BaseResponseDTO crearMovimiento(MovimientoDTO Movimiento);
+    BaseResponseDTO obtenerMovimiento(Long idMovimiento);
+    BaseResponseDTO actualizarMovimiento(MovimientoDTO Movimiento, Long idMovimiento);
+    BaseResponseDTO eliminarMovimiento(Long idMovimiento);
 }
