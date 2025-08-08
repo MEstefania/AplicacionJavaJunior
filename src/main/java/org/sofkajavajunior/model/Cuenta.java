@@ -21,13 +21,13 @@ public class Cuenta {
     @Column(name = "estado_cue",nullable = false)
     private Boolean estado;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     @JoinColumn(
-            name = "id_cli",
-            referencedColumnName = "id_cli",
-            foreignKey = @ForeignKey(name = "FK_CUENTA_CLIENTE_ID"),
+            name = "id_per",
+            referencedColumnName = "id_per",
+            foreignKey = @ForeignKey(name = "fk_cuenta_cliente_id"),
             nullable = false)
-    private Long idCliente;
+    private Cliente idCliente;
 
     public Cuenta() {
     }
@@ -72,11 +72,11 @@ public class Cuenta {
         this.estado = estado;
     }
 
-    public Long getIdCliente() {
+    public Cliente getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Long idCliente) {
+    public void setIdCliente(Cliente idCliente) {
         this.idCliente = idCliente;
     }
 }

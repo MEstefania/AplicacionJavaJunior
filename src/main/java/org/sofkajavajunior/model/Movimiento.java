@@ -27,7 +27,7 @@ public class Movimiento {
             referencedColumnName = "id_cue",
             foreignKey = @ForeignKey(name = "FK_MOVIMIENTO_CUENTA_ID"),
             nullable = false)
-    private Long idCuenta;
+    private Cuenta idCuenta;
 
     public Movimiento() {
     }
@@ -72,11 +72,11 @@ public class Movimiento {
         this.saldoMovimiento = saldoMovimiento;
     }
 
-    public Long getIdCuenta() {
+    public Cuenta getIdCuenta() {
         return idCuenta;
     }
 
-    public void setIdCuenta(Long idCuenta) {
+    public void setIdCuenta(Cuenta idCuenta) {
         this.idCuenta = idCuenta;
     }
 }

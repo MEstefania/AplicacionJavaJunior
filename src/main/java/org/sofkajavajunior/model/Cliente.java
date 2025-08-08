@@ -7,7 +7,7 @@ import javax.persistence.*;
         name = "cliente",
         schema = "sofka")
 public class Cliente extends Persona{
-    @Id
+    //@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cli", nullable = false)
     private Long id;

@@ -2,7 +2,7 @@ CREATE SCHEMA if not exists sofka;
 ALTER SCHEMA sofka OWNER TO "sofka_owner";
 
 --Persona
-CREATE table IF NOT EXISTS persona
+CREATE table IF NOT EXISTS sofka.persona
 (
     id_per                  BIGSERIAL primary key,
     nombre_per              text NOT NULL,
@@ -11,27 +11,27 @@ CREATE table IF NOT EXISTS persona
     identificacion_per      varchar(30),
     direccion_per           text NOT NULL,
     telefono_per            varchar(10) NOT NULL
-)
+);
 
 ALTER TABLE sofka.persona
     OWNER to "sofka_owner";
 
 --Cliente
-CREATE table IF NOT EXISTS cliente
+CREATE table IF NOT EXISTS sofka.cliente
 (
-    id_cli             BIGSERIAL primary key,
-    contrasenia_cli     text NOT NULL,,
+    id_cli              BIGSERIAL primary key,
+    contrasenia_cli     text NOT NULL,
     estado_cli          boolean NOT NULL,
     id_per              bigint
                         constraint fk_cliente_persona_id
                         references sofka.persona(id_per)
-)
+);
 
 ALTER TABLE sofka.cliente
     OWNER to "sofka_owner";
 
 --Cuenta
-CREATE table IF NOT EXISTS cuenta
+CREATE table IF NOT EXISTS sofka.cuenta
 (
     id_cue              BIGSERIAL primary key,
     numero_cue          text NOT NULL,
@@ -41,13 +41,13 @@ CREATE table IF NOT EXISTS cuenta
     id_cli              bigint
                     constraint fk_cuenta_cliente_id
                     references sofka.cliente(id_cli)
-)
+);
 
 ALTER TABLE sofka.cuenta
     OWNER to "sofka_owner";
 
 --Movimiento
-CREATE table IF NOT EXISTS movimiento
+CREATE table IF NOT EXISTS sofka.movimiento
 (
     id_mov          BIGSERIAL primary key,
     fecha_mov       timestamp NOT NULL,
@@ -57,7 +57,7 @@ CREATE table IF NOT EXISTS movimiento
     id_cue          bigint
                     constraint fk_movimiento_cuenta_id
                     references sofka.cuenta(id_cue)
-)
+);
 
 ALTER TABLE sofka.movimiento
     OWNER to "sofka_owner";
