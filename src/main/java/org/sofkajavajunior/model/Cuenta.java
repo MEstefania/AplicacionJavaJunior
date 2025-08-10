@@ -21,13 +21,15 @@ public class Cuenta {
     @Column(name = "estado_cue",nullable = false)
     private Boolean estado;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(
-            name = "id_per",
+            name = "id_cli",
             referencedColumnName = "id_per",
             foreignKey = @ForeignKey(name = "fk_cuenta_cliente_id"),
             nullable = false)
-    private Cliente idCliente;
+    private Cliente idCliente;*/
+    @Column(name = "id_cli",nullable = false)
+    private Long idCliente;
 
     public Cuenta() {
     }
@@ -72,11 +74,11 @@ public class Cuenta {
         this.estado = estado;
     }
 
-    public Cliente getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Cliente idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 }

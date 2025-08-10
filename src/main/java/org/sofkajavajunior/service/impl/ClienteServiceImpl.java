@@ -5,6 +5,7 @@ import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseResponseSimpleDTO;
 import org.sofkajavajunior.dto.respuestaBase.ResponseBaseMapper;
 import org.sofkajavajunior.exception.ClienteException;
+import org.sofkajavajunior.exception.CuentaException;
 import org.sofkajavajunior.exception.MovimientoException;
 import org.sofkajavajunior.model.Cliente;
 import org.sofkajavajunior.repository.ClienteRepository;
@@ -26,7 +27,10 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public BaseResponseDTO crearCliente(ClienteDTO cliente) {
         try {
-            clienteRepository.findByIdentificacion(cliente.getIdentificacion()).orElseThrow(() -> new ClienteException(ClienteException.YA_EXISTE_CLIENTE));
+            Cliente clienteExiste = clienteRepository.findByIdentificacion(cliente.getIdentificacion()).orElse(null);
+            if (clienteExiste != null) {
+                throw new ClienteException(ClienteException.YA_EXISTE_CLIENTE);
+            }
             return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(crearClienteModel(cliente)).getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());

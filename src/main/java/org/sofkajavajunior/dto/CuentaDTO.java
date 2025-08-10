@@ -7,6 +7,8 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class CuentaDTO {
+    @JsonProperty("id_cuenta")
+    private String idCuenta;
     @NotNull(message = "El número de cuenta no puede ser nulo.")
     @JsonProperty("numero_cuenta")
     private String numeroCuenta;
@@ -19,8 +21,17 @@ public class CuentaDTO {
     @NotNull(message = "El estado no puede ser nulo.")
     @JsonProperty("estado")
     private Boolean estado;
+    @NotNull(message = "El cliente no puede ser nulo.")
     @JsonProperty("id_cliente")
     private Long idCliente;
+
+    public String getIdCuenta() {
+        return idCuenta;
+    }
+
+    public void setIdCuenta(String idCuenta) {
+        this.idCuenta = idCuenta;
+    }
 
     public String getNumeroCuenta() {
         return numeroCuenta;

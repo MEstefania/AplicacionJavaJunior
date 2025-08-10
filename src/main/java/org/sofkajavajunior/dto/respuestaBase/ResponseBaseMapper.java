@@ -34,7 +34,7 @@ public abstract class ResponseBaseMapper {
 
     public static BaseResponseDTO generateOkResponseDelete(final Long oldId) {
         Map<String, Long> result = new HashMap<>();
-        result.put("newId", oldId);
+        result.put("oldId", oldId);
         return generateOkResponse(Arrays.asList(result));
     }
 
