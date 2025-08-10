@@ -6,9 +6,9 @@ CREATE table IF NOT EXISTS sofka.persona
 (
     id_per                  BIGSERIAL primary key,
     nombre_per              text NOT NULL,
-    genero_per              varchar(1),
+    genero_per              varchar(10),
     edad_per                integer CHECK (edad_per >= 0) ,
-    identificacion_per      varchar(30),
+    identificacion_per      varchar(30) UNIQUE,
     direccion_per           text NOT NULL,
     telefono_per            varchar(10) NOT NULL
 );

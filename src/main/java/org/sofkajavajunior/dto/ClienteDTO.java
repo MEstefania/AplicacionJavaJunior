@@ -6,28 +6,49 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class ClienteDTO {
+
+    @JsonProperty("id")
+    private String id;
+
     @NotNull(message = "El nombre no puede ser nulo.")
     @JsonProperty("nombre")
     private String nombre;
+
     @JsonProperty("genero")
     @Size(max = 10)
     private String genero;
+
     @JsonProperty("edad")
     private int edad;
+
     @JsonProperty("identificacion")
     @Size(max = 30)
     private String identificacion;
+
+    @NotNull(message = "La dirección no puede ser nula.")
     @JsonProperty("direccion")
     private String direccion;
+
+    @NotNull(message = "El teléfono no puede ser nulo.")
     @JsonProperty("telefono")
     @Size(max = 10)
     private String telefono;
+
     @NotNull(message = "La contraseña no puede ser nulo.")
     @JsonProperty("contrasenia")
     private String contrasenia;
+
     @NotNull(message = "El estado no puede ser nulo.")
     @JsonProperty("estado")
     private Boolean estado;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;

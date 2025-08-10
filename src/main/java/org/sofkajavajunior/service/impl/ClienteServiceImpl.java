@@ -25,16 +25,13 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public BaseResponseDTO crearCliente(ClienteDTO cliente) {
-        Cliente nuevoCliente = new Cliente();
-        nuevoCliente.setNombre(cliente.getNombre());
-        nuevoCliente.setIdentificacion(cliente.getIdentificacion());
-        nuevoCliente.setEstado(cliente.getEstado());
-        nuevoCliente.setEdad(cliente.getEdad());
-        nuevoCliente.setContrasenia(cliente.getContrasenia());
-        nuevoCliente.setDireccion(cliente.getDireccion());
-        nuevoCliente.setGenero(cliente.getGenero());
-        nuevoCliente.setTelefono(cliente.getTelefono());
-        return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(nuevoCliente).getId());
+        try {
+            clienteRepository.findByIdentificacion(cliente.getIdentificacion()).orElseThrow(() -> new ClienteException(ClienteException.YA_EXISTE_CLIENTE));
+            return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(crearClienteModel(cliente)).getId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ResponseBaseMapper.generateErrorResponse(e.getMessage());
+        }
     }
 
     @Override
@@ -46,16 +43,50 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public BaseResponseDTO obtenerTodosLosClientes() {
-        return ResponseBaseMapper.generateOkResponse(clienteRepository.findAll().stream().map(cliente -> modelMapper.map(cliente, ClienteDTO.class)).collect(Collectors.toList()));
+        return ResponseBaseMapper.generateOkResponse(clienteRepository.findAll().
+                stream().
+                map(cliente -> modelMapper.map(cliente, ClienteDTO.class))
+                .collect(Collectors.toList()));
     }
 
     @Override
     public BaseResponseDTO actualizarCliente(ClienteDTO cliente, Long idCliente) {
-        return null;
+        try {
+            clienteRepository.findById(idCliente).orElseThrow(() -> new ClienteException(ClienteException.NO_EXISTE_CLIENTE));
+            Cliente clienteNuevo = crearClienteModel(cliente);
+            clienteNuevo.setId(idCliente);
+            return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(clienteNuevo).getId());
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ResponseBaseMapper.generateErrorResponse(e.getMessage());
+        }
     }
 
     @Override
     public BaseResponseDTO eliminarCliente(Long idCliente) {
-        return null;
+        try {
+            Cliente cliente = clienteRepository.findById(idCliente).orElseThrow(() -> new ClienteException(ClienteException.NO_EXISTE_CLIENTE));
+            clienteRepository.delete(cliente);
+            return ResponseBaseMapper.generateOkResponseDelete(cliente.getId());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return ResponseBaseMapper.generateErrorResponse(e.getMessage());
+        }
+
+    }
+
+    private Cliente crearClienteModel(ClienteDTO cliente
+    ) {
+        Cliente nuevoCliente = new Cliente();
+        nuevoCliente.setNombre(cliente.getNombre());
+        nuevoCliente.setIdentificacion(cliente.getIdentificacion());
+        nuevoCliente.setEstado(cliente.getEstado());
+        nuevoCliente.setEdad(cliente.getEdad());
+        nuevoCliente.setContrasenia(cliente.getContrasenia());
+        nuevoCliente.setDireccion(cliente.getDireccion());
+        nuevoCliente.setGenero(cliente.getGenero());
+        nuevoCliente.setTelefono(cliente.getTelefono());
+        return nuevoCliente;
     }
 }

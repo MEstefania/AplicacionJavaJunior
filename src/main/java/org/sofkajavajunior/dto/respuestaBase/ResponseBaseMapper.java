@@ -32,4 +32,19 @@ public abstract class ResponseBaseMapper {
         return generateOkResponse(Arrays.asList(result));
     }
 
+    public static BaseResponseDTO generateOkResponseDelete(final Long oldId) {
+        Map<String, Long> result = new HashMap<>();
+        result.put("newId", oldId);
+        return generateOkResponse(Arrays.asList(result));
+    }
+
+    public static BaseResponseDTO generateErrorResponse(final String message) {
+        BaseResponseDTO baseResponseDTO = new BaseResponseDTO();
+        baseResponseDTO.setStatus(false);
+        baseResponseDTO.setResult(null);
+        baseResponseDTO.setErrorCode(1);
+        baseResponseDTO.setMessage(message);
+        return baseResponseDTO;
+    }
+
 }
