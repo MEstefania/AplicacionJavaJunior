@@ -15,19 +15,23 @@ public class Movimiento {
     private Long id;
     @Column(name = "fecha_mov", nullable = false)
     private Timestamp fecha;
-    @Column(name = "tipo_cue",nullable = false)
+    @Column(name = "tipo_mov",nullable = false)
     private String tipo;
     @Column(name = "valor_mov",nullable = false)
     private BigDecimal valorMovimiento;
     @Column(name = "saldo_mov",nullable = false)
     private BigDecimal saldoMovimiento;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+
+    /*@ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(
             name = "id_cue",
             referencedColumnName = "id_cue",
             foreignKey = @ForeignKey(name = "FK_MOVIMIENTO_CUENTA_ID"),
             nullable = false)
-    private Cuenta idCuenta;
+    private Cuenta idCuenta;*/
+
+    @Column(name = "id_cue",nullable = false)
+    private Long idCuenta;
 
     public Movimiento() {
     }
@@ -72,11 +76,11 @@ public class Movimiento {
         this.saldoMovimiento = saldoMovimiento;
     }
 
-    public Cuenta getIdCuenta() {
+    public Long getIdCuenta() {
         return idCuenta;
     }
 
-    public void setIdCuenta(Cuenta idCuenta) {
+    public void setIdCuenta(Long idCuenta) {
         this.idCuenta = idCuenta;
     }
 }

@@ -8,20 +8,34 @@ import java.sql.Time;
 import java.sql.Timestamp;
 
 public class MovimientoDTO {
+    @JsonProperty("id_movimiento")
+    private Long idMovimiento;
     @NotNull(message = "La fecha no puede ser nulo.")
     @JsonProperty("fecha")
     private Timestamp fecha;
+
     @NotNull(message = "El tipo no puede ser nulo.")
     @JsonProperty("tipo")
     private String tipo;
-    @NotNull(message = "El saldo inicial no puede ser nulo.")
+
+    @NotNull(message = "El valor no puede ser nulo.")
     @JsonProperty("valor_movimiento")
     private BigDecimal valorMovimiento;
-    @NotNull(message = "El saldo inicial no puede ser nulo.")
+
     @JsonProperty("saldo")
     private BigDecimal saldo;
+
+    @NotNull(message = "La cuenta no puede ser nulo.")
     @JsonProperty("id_cuenta")
     private Long idCuenta;
+
+    public Long getIdMovimiento() {
+        return idMovimiento;
+    }
+
+    public void setIdMovimiento(Long idMovimiento) {
+        this.idMovimiento = idMovimiento;
+    }
 
     public Timestamp getFecha() {
         return fecha;
