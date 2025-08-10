@@ -16,6 +16,7 @@ import org.sofkajavajunior.service.CuentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,7 +43,8 @@ public class CuentaServiceImpl implements CuentaService {
     @Override
     public BaseResponseSimpleDTO obtenerCuenta(Long idCuenta) {
         return ResponseBaseMapper.generateOkSimpleResponse(modelMapper.map(
-                cuentaRepository.findById(idCuenta),
+                cuentaRepository.findById(idCuenta)
+                        .orElseThrow(() -> new EntityNotFoundException("No se encontró la cuenta con id: " + idCuenta)),
                 CuentaDTO.class));
     }
 

@@ -15,6 +15,7 @@ import org.sofkajavajunior.service.MovimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -71,8 +72,10 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     @Override
     public BaseResponseSimpleDTO obtenerMovimiento(Long idMovimiento) {
-        return ResponseBaseMapper.generateOkSimpleResponse(modelMapper.map(
-                movimientoRepository.findById(idMovimiento),
+        return ResponseBaseMapper.generateOkSimpleResponse(modelMapper
+                .map(
+                        movimientoRepository.findById(idMovimiento)
+                        .orElseThrow(() -> new EntityNotFoundException("No se encontró el movimiento con id: " + idMovimiento)),
                 MovimientoDTO.class));
     }
 

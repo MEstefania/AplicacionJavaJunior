@@ -11,9 +11,11 @@ import org.sofkajavajunior.model.Cliente;
 import org.sofkajavajunior.repository.ClienteRepository;
 import org.sofkajavajunior.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,9 +41,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public BaseResponseSimpleDTO obtenerCliente(Long idCliente) {
-        return ResponseBaseMapper.generateOkSimpleResponse(modelMapper.map(
-                clienteRepository.findById(idCliente),
-                ClienteDTO.class));
+            return ResponseBaseMapper.generateOkSimpleResponse(modelMapper.map(clienteRepository.findById(idCliente)
+                            .orElseThrow(() -> new EntityNotFoundException("No se encontró el cliente con id: " + idCliente)),
+                    ClienteDTO.class));
     }
 
     @Override

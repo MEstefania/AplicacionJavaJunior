@@ -1,10 +1,14 @@
 package org.sofkajavajunior.exception;
 
+import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
+import org.sofkajavajunior.dto.respuestaBase.ResponseBaseMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,5 +23,10 @@ public class ValidationExceptionHandler {
         });
 
         return ResponseEntity.badRequest().body(errores);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<BaseResponseDTO> handleEntityNotFoundException(EntityNotFoundException ex) {
+        return new ResponseEntity<>( ResponseBaseMapper.generateErrorResponse(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 }
