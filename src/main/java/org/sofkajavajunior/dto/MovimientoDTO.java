@@ -1,10 +1,8 @@
 package org.sofkajavajunior.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 public class MovimientoDTO {

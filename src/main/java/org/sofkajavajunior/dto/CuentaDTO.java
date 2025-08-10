@@ -1,10 +1,7 @@
 package org.sofkajavajunior.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class CuentaDTO {

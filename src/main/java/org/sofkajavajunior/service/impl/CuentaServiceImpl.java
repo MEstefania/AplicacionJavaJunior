@@ -1,6 +1,5 @@
 package org.sofkajavajunior.service.impl;
 
-import ch.qos.logback.core.net.server.Client;
 import org.modelmapper.ModelMapper;
 import org.sofkajavajunior.dto.CuentaDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;

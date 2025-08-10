@@ -1,7 +1,5 @@
 package org.sofkajavajunior.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

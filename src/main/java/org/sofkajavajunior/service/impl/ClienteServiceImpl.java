@@ -5,19 +5,13 @@ import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseResponseSimpleDTO;
 import org.sofkajavajunior.dto.respuestaBase.ResponseBaseMapper;
 import org.sofkajavajunior.exception.ClienteException;
-import org.sofkajavajunior.exception.CuentaException;
-import org.sofkajavajunior.exception.MovimientoException;
 import org.sofkajavajunior.model.Cliente;
 import org.sofkajavajunior.repository.ClienteRepository;
 import org.sofkajavajunior.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
-
 import javax.persistence.EntityNotFoundException;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
