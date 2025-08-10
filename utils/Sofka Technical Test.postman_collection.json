@@ -399,7 +399,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\":\"2025-08-10T14:22:49.000Z\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"valor_movimiento\":-500,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":2\r\n}",
+							"raw": "{\r\n    \"fecha\":\"2025-08-10T14:22:49.000Z\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"valor_movimiento\":-600,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -407,7 +407,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/api/movimientos/{idMovimiento}",
+							"raw": "http://localhost:8083/api/movimientos/9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -416,7 +416,43 @@
 							"path": [
 								"api",
 								"movimientos",
-								"{idMovimiento}"
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "Reporte de cuentas por cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/api/reportes/1?fechaInicio=2025/08/09&fechaFin=2025/08/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"api",
+								"reportes",
+								"1"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025/08/09"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025/08/11"
+								}
 							]
 						}
 					},
