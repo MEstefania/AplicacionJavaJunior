@@ -58,7 +58,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"Marianela Montalvo\",\r\n    //\"genero\":\"Femenino\",\r\n    //\"edad\":24,\r\n    \"identificacion\":\"1234567890\", \r\n    \"direccion\":\"Amazonas y NNUU\",\r\n    \"telefono\":\"097548965\",\r\n    \"contrasenia\":\"5678\",\r\n    \"estado\":\"True\"\r\n}",
+							"raw": "{\r\n    \"nombre\":\"Juan Osorio\",\r\n    //\"genero\":\"Femenino\",\r\n    //\"edad\":24,\r\n    \"identificacion\":\"1234567892\", \r\n    \"direccion\":\"13 junio y Equinoccial\",\r\n    \"telefono\":\"098874587\",\r\n    \"contrasenia\":\"1245\",\r\n    \"estado\":\"True\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -220,7 +220,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"numero_cuenta\":\"478758\",\r\n    \"tipo\":\"Ahorro\",\r\n    \"saldo_inicial\":2000,\r\n    \"estado\":\"True\",\r\n    \"id_cliente\":1\r\n}",
+							"raw": "/*{\r\n    \"numero_cuenta\":\"478758\",\r\n    \"tipo\":\"Ahorro\",\r\n    \"saldo_inicial\":2000,\r\n    \"estado\":\"True\",\r\n    \"id_cliente\":2\r\n}*/\r\n/*{\r\n    \"numero_cuenta\":\"225487\",\r\n    \"tipo\":\"Corriente\",\r\n    \"saldo_inicial\":100,\r\n    \"estado\":\"True\",\r\n    \"id_cliente\":1\r\n}*/\r\n/*{\r\n    \"numero_cuenta\":\"495878\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"saldo_inicial\":0,\r\n    \"estado\":\"True\",\r\n    \"id_cliente\":3\r\n}*/\r\n/*{\r\n    \"numero_cuenta\":\"496825\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"saldo_inicial\":540,\r\n    \"estado\":\"True\",\r\n    \"id_cliente\":1\r\n}*/\r\n{\r\n    \"numero_cuenta\":\"585545\",\r\n    \"tipo\":\"Corriente\",\r\n    \"saldo_inicial\":1000,\r\n    \"estado\":\"True\",\r\n    \"id_cliente\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -348,7 +348,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\":\"2025-08-09T16:22:49.000Z\",\r\n    \"tipo\":\"Corriente\",\r\n    \"valor_movimiento\":12.50,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":1\r\n}",
+							"raw": "/*{\r\n    \"fecha\":\"2025-08-10T11:22:49.000Z\",\r\n    \"tipo\":\"Ahorro\",\r\n    \"valor_movimiento\":-575,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":1\r\n}*/\r\n/*{\r\n    \"fecha\":\"2025-08-10T11:22:49.000Z\",\r\n    \"tipo\":\"Corriente\",\r\n    \"valor_movimiento\":600,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":2\r\n}*/\r\n/*{\r\n    \"fecha\":\"2025-08-10T11:22:49.000Z\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"valor_movimiento\":150,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":3\r\n}*/\r\n{\r\n    \"fecha\":\"2025-08-10T12:22:49.000Z\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"valor_movimiento\":-540,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -399,7 +399,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\":\"2025-08-09T14:22:49.000Z\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"valor_movimiento\":-2.2,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":1\r\n}",
+							"raw": "{\r\n    \"fecha\":\"2025-08-10T14:22:49.000Z\",\r\n    \"tipo\":\"Ahorros\",\r\n    \"valor_movimiento\":-500,\r\n    \"estado\":\"True\",\r\n    \"id_cuenta\":2\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -407,7 +407,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/api/movimientos/3",
+							"raw": "http://localhost:8083/api/movimientos/9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -416,7 +416,7 @@
 							"path": [
 								"api",
 								"movimientos",
-								"3"
+								"9"
 							]
 						}
 					},
