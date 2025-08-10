@@ -36,7 +36,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8083/api/clientes/6",
+							"raw": "http://localhost:8083/api/clientes/{idCliente}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -45,7 +45,7 @@
 							"path": [
 								"api",
 								"clientes",
-								"6"
+								"{idCliente}"
 							]
 						}
 					},
@@ -121,7 +121,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8083/api/clientes/6",
+							"raw": "http://localhost:8083/api/clientes/{idCliente}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -130,7 +130,7 @@
 							"path": [
 								"api",
 								"clientes",
-								"6"
+								"{idCliente}"
 							]
 						}
 					},
@@ -151,7 +151,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/api/clientes/9",
+							"raw": "http://localhost:8083/api/clientes/{idCliente}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -160,7 +160,7 @@
 							"path": [
 								"api",
 								"clientes",
-								"9"
+								"{idCliente}"
 							]
 						}
 					},
@@ -198,7 +198,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8083/api/cuentas/1",
+							"raw": "http://localhost:8083/api/cuentas/{idCuenta}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -207,7 +207,7 @@
 							"path": [
 								"api",
 								"cuentas",
-								"1"
+								"{idCuenta}"
 							]
 						}
 					},
@@ -249,7 +249,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8083/api/cuentas/1",
+							"raw": "http://localhost:8083/api/cuentas/{idCuenta}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -258,7 +258,7 @@
 							"path": [
 								"api",
 								"cuentas",
-								"1"
+								"{idCuenta}"
 							]
 						}
 					},
@@ -279,7 +279,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/api/cuentas/1",
+							"raw": "http://localhost:8083/api/cuentas/{idCuenta}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -288,7 +288,7 @@
 							"path": [
 								"api",
 								"cuentas",
-								"1"
+								"{idCuenta}"
 							]
 						}
 					},
@@ -326,7 +326,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8083/api/movimientos/1",
+							"raw": "http://localhost:8083/api/movimientos/{idMovimiento}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -335,7 +335,7 @@
 							"path": [
 								"api",
 								"movimientos",
-								"1"
+								"{idMovimiento}"
 							]
 						}
 					},
@@ -377,7 +377,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8083/api/movimientos/2",
+							"raw": "http://localhost:8083/api/movimientos/{idMovimiento}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -386,7 +386,7 @@
 							"path": [
 								"api",
 								"movimientos",
-								"2"
+								"{idMovimiento}"
 							]
 						}
 					},
@@ -407,7 +407,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/api/movimientos/9",
+							"raw": "http://localhost:8083/api/movimientos/{idMovimiento}",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -416,7 +416,7 @@
 							"path": [
 								"api",
 								"movimientos",
-								"9"
+								"{idMovimiento}"
 							]
 						}
 					},
