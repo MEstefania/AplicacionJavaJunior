@@ -5,8 +5,11 @@ import org.sofkajavajunior.dto.MovimientoDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseResponseDTO;
 import org.sofkajavajunior.dto.respuestaBase.BaseResponseSimpleDTO;
 import org.sofkajavajunior.dto.respuestaBase.ResponseBaseMapper;
+import org.sofkajavajunior.exception.CuentaException;
 import org.sofkajavajunior.exception.MovimientoException;
+import org.sofkajavajunior.model.Cuenta;
 import org.sofkajavajunior.model.Movimiento;
+import org.sofkajavajunior.repository.CuentaRepository;
 import org.sofkajavajunior.repository.MovimientoRepository;
 import org.sofkajavajunior.service.MovimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +23,35 @@ public class MovimientoServiceImpl implements MovimientoService {
     private final ModelMapper modelMapper = new ModelMapper();
     @Autowired
     private MovimientoRepository movimientoRepository;
+    @Autowired
+    private CuentaRepository cuentaRepository;
 
     @Override
     public BaseResponseDTO crearMovimiento(MovimientoDTO movimiento) {
         try {
-
-            BigDecimal saldo = calcularSaldoActualizado(movimiento.getIdCuenta());
-            return ResponseBaseMapper.generateOkResponseCreateUpdate(movimientoRepository.save(crearMovimientoModel(movimiento, saldo)).getId());
+            Movimiento utimoMovimiento = movimientoRepository.findFirstByIdCuentaOrderByFechaDesc(movimiento.getIdCuenta()).orElse(null);
+            Cuenta cuenta = cuentaRepository.findById(movimiento.getIdCuenta()).orElseThrow(() -> new CuentaException(CuentaException.NO_EXISTE_CUENTA));
+            BigDecimal saldoActual = calcularSaldoActual(movimiento, utimoMovimiento, cuenta);
+            return ResponseBaseMapper.generateOkResponseCreateUpdate(movimientoRepository.save(crearMovimientoModel(movimiento, saldoActual)).getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
 
-    private BigDecimal calcularSaldoActualizado(Long idcuenta){
-        return BigDecimal.ZERO;
+    private static BigDecimal calcularSaldoActual(MovimientoDTO movimiento, Movimiento utimoMovimiento, Cuenta cuenta) {
+        BigDecimal saldoActual;
+        //Si tuve movimientos anteriores
+        if (utimoMovimiento != null) {
+            saldoActual = utimoMovimiento.getSaldoMovimiento().add(movimiento.getValorMovimiento());
+        } else { //saldo inicial
+            saldoActual = cuenta.getSaldoInicial().add(movimiento.getValorMovimiento());
+        }
+        //Si tengo saldo positivo o no
+        if (saldoActual.compareTo(BigDecimal.ZERO) < 0) {
+            throw new MovimientoException(MovimientoException.SALDO_NO_DISPONIBLE);
+        }
+        return saldoActual;
     }
 
     @Override
@@ -77,6 +94,7 @@ public class MovimientoServiceImpl implements MovimientoService {
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
+
     private Movimiento crearMovimientoModel(MovimientoDTO movimiento, BigDecimal saldo
     ) {
         Movimiento nuevoMovimiento = new Movimiento();
