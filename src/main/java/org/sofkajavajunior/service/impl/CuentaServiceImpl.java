@@ -35,7 +35,6 @@ public class CuentaServiceImpl implements CuentaService {
             }
             return ResponseBaseMapper.generateOkResponseCreateUpdate(cuentaRepository.save(crearCuentaModel(cuenta)).getId());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
@@ -54,7 +53,7 @@ public class CuentaServiceImpl implements CuentaService {
                 map(cuenta -> {
                     CuentaDTO dto = modelMapper.map(cuenta, CuentaDTO.class);
                     dto.setCliente(cuenta.getIdCliente().getNombre());
-                    return  dto;
+                    return dto;
                 })
                 .collect(Collectors.toList()));
     }
@@ -68,7 +67,7 @@ public class CuentaServiceImpl implements CuentaService {
             return ResponseBaseMapper.generateOkResponseCreateUpdate(cuentaRepository.save(cuentaNuevo).getId());
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
@@ -80,20 +79,20 @@ public class CuentaServiceImpl implements CuentaService {
             cuentaRepository.delete(cuenta);
             return ResponseBaseMapper.generateOkResponseDelete(cuenta.getId());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
 
     private Cuenta crearCuentaModel(CuentaDTO cuenta
     ) {
-            Cliente cliente = clienteRepository.findById(cuenta.getIdCliente()).orElseThrow(() -> new ClienteException(ClienteException.NO_EXISTE_CLIENTE));
-            Cuenta nuevaCuenta = new Cuenta();
-            nuevaCuenta.setNumeroCuenta(cuenta.getNumeroCuenta());
-            nuevaCuenta.setTipo(cuenta.getTipo());
-            nuevaCuenta.setEstado(cuenta.getEstado());
-            nuevaCuenta.setSaldoInicial(cuenta.getSaldoInicial());
-            nuevaCuenta.setIdCliente(cliente);
-            return nuevaCuenta;
+        Cliente cliente = clienteRepository.findById(cuenta.getIdCliente()).orElseThrow(() -> new ClienteException(ClienteException.NO_EXISTE_CLIENTE));
+        Cuenta nuevaCuenta = new Cuenta();
+        nuevaCuenta.setNumeroCuenta(cuenta.getNumeroCuenta());
+        nuevaCuenta.setTipo(cuenta.getTipo());
+        nuevaCuenta.setEstado(cuenta.getEstado());
+        nuevaCuenta.setSaldoInicial(cuenta.getSaldoInicial());
+        nuevaCuenta.setIdCliente(cliente);
+        return nuevaCuenta;
     }
 }

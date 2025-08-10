@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 public class MovimientoDTO {
     @JsonProperty("id_movimiento")
     private Long idMovimiento;
-    @NotNull(message = "La fecha no puede ser nulo.")
+
     @JsonProperty("fecha")
     private Timestamp fecha;
 

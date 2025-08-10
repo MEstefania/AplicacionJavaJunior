@@ -33,7 +33,6 @@ public class ClienteServiceImpl implements ClienteService {
             }
             return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(crearClienteModel(cliente)).getId());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
@@ -62,7 +61,6 @@ public class ClienteServiceImpl implements ClienteService {
             return ResponseBaseMapper.generateOkResponseCreateUpdate(clienteRepository.save(clienteNuevo).getId());
 
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
     }
@@ -74,10 +72,8 @@ public class ClienteServiceImpl implements ClienteService {
             clienteRepository.delete(cliente);
             return ResponseBaseMapper.generateOkResponseDelete(cliente.getId());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return ResponseBaseMapper.generateErrorResponse(e.getMessage());
         }
-
     }
 
     private Cliente crearClienteModel(ClienteDTO cliente
