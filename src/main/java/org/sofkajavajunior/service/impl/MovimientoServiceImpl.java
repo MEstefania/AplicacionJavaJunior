@@ -97,11 +97,12 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     private Movimiento crearMovimientoModel(MovimientoDTO movimiento, BigDecimal saldo
     ) {
+        Cuenta cuenta = cuentaRepository.findById(movimiento.getIdCuenta()).orElseThrow(()-> new CuentaException(CuentaException.NO_EXISTE_CUENTA));
         Movimiento nuevoMovimiento = new Movimiento();
         nuevoMovimiento.setFecha(movimiento.getFecha());
         nuevoMovimiento.setTipo(movimiento.getTipo());
         nuevoMovimiento.setValorMovimiento(movimiento.getValorMovimiento());
-        nuevoMovimiento.setIdCuenta(movimiento.getIdCuenta());
+        nuevoMovimiento.setIdCuenta(cuenta);
         nuevoMovimiento.setSaldoMovimiento(saldo);
         return nuevoMovimiento;
     }

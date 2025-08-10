@@ -3,27 +3,36 @@ package org.sofkajavajunior.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 public class CuentaDTO {
     @JsonProperty("id_cuenta")
     private String idCuenta;
+
     @NotNull(message = "El número de cuenta no puede ser nulo.")
     @JsonProperty("numero_cuenta")
     private String numeroCuenta;
+
     @NotNull(message = "El tipo no puede ser nulo.")
     @JsonProperty("tipo")
     private String tipo;
+
     @NotNull(message = "El saldo inicial no puede ser nulo.")
     @JsonProperty("saldo_inicial")
     private BigDecimal saldoInicial;
+
     @NotNull(message = "El estado no puede ser nulo.")
     @JsonProperty("estado")
     private Boolean estado;
+
     @NotNull(message = "El cliente no puede ser nulo.")
     @JsonProperty("id_cliente")
     private Long idCliente;
+
+    @JsonProperty("cliente")
+    private String cliente;
 
     public String getIdCuenta() {
         return idCuenta;
@@ -71,5 +80,13 @@ public class CuentaDTO {
 
     public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 }

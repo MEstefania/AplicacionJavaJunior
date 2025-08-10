@@ -21,6 +21,7 @@ public class ClienteDTO {
     @JsonProperty("edad")
     private int edad;
 
+    @NotNull(message = "La identificacion no puede ser nula.")
     @JsonProperty("identificacion")
     @Size(max = 30)
     private String identificacion;
