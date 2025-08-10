@@ -27,6 +27,15 @@ public class MovimientoDTO {
     @JsonProperty("id_cuenta")
     private Long idCuenta;
 
+    public MovimientoDTO(Long idMovimiento, Timestamp fecha, String tipo, BigDecimal valorMovimiento, BigDecimal saldo, Long idCuenta) {
+        this.idMovimiento = idMovimiento;
+        this.fecha = fecha;
+        this.tipo = tipo;
+        this.valorMovimiento = valorMovimiento;
+        this.saldo = saldo;
+        this.idCuenta = idCuenta;
+    }
+
     public Long getIdMovimiento() {
         return idMovimiento;
     }

@@ -13,5 +13,6 @@ import java.util.Optional;
 public interface MovimientoRepository extends JpaRepository<Movimiento, Long> {
     Optional<Movimiento> findFirstByIdCuentaOrderByFechaDesc(final Cuenta IdCuenta);
     Optional<List<Movimiento>> findByIdCuentaAndFechaAfter(final Cuenta IdCuenta, final Timestamp Fecha);
+    Optional<List<Movimiento>> findByIdCuentaAndFechaBetweenOrderByFechaDesc(final Cuenta IdCuenta, Timestamp desde, Timestamp hasta);
     Optional<Movimiento> findFirstsByIdCuentaAndFechaBeforeOrderByFechaDesc(final Cuenta IdCuenta, final Timestamp Fecha);
 }
