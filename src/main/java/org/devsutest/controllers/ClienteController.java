@@ -21,6 +21,7 @@ public class ClienteController {
     public ResponseEntity<BaseResponseDTO> crearCliente(
             @Valid @RequestBody ClienteDTO  nuevo_cliente
     ) {
+        System.out.println("Creando ..."+nuevo_cliente.getNombre());
         return new ResponseEntity<>(clienteService.crearCliente(nuevo_cliente), HttpStatus.OK);
     }
     @GetMapping("/{cliente_id}")
